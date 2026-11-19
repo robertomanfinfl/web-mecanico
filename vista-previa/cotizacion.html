@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="./assets/25-kmm0ib62-9.css" data-precedence="next"/><title>Cotización | Taller Umbral</title><meta name="description" content="Mantención, diagnóstico y reparación automotriz."/><meta name="robots" content="noindex, nofollow"/><meta name="next-size-adjust" content=""/>
+<script defer src="./assets/cotizacion.js"></script>
+<link rel="stylesheet" href="./assets/demo.css">
+</head>
+<body><div hidden=""></div><a class="skip" href="#contenido">Ir al contenido</a>
+<header class="site-header"><div class="wrap header-inner"><a class="brand" href="./index.html">Taller Umbral</a>
+<nav aria-label="Navegación principal"><a href="./servicios.html">Servicios</a><a href="./cotizacion.html">Cotizar</a><a href="./reservas.html">Solicitar hora</a><a href="./index.html#contacto">Contacto</a>
+</nav></div>
+</header>
+<aside class="demo-banner" aria-label="Modo de visualización">
+  <div class="wrap demo-banner-inner">
+    <div><strong>Demostración estática</strong><p>Para iniciar sesión o subir fotos, abre <code>iniciar-web.bat</code> en la carpeta principal del proyecto.</p></div>
+    <nav aria-label="Aplicación funcional">
+      <a class="button outline" href="http://localhost:3000/ingresar">Iniciar sesión en la aplicación</a>
+      <a class="button outline" href="http://localhost:3000/registro">Registrarse en la aplicación</a>
+    </nav>
+  </div>
+</aside>
+<main id="contenido">
+<section class="wrap section form-page"><h1>Solicitar cotización</h1><p class="intro">Cuéntanos qué necesita tu auto.</p>
+<form class="request-form" aria-describedby="estado-formulario" method="post"><p id="estado-formulario" class="notice">Vista previa. Los datos y las fotos que selecciones quedan en este formulario. El envío estará disponible cuando se conecte el servidor.</p>
+<fieldset><legend>Servicio y vehículo</legend><div class="fields"><label class="full-field">Servicio<select name="servicio" required=""><option value="" selected="">Selecciona un servicio</option><option value="mantencion">Mantención preventiva</option><option value="diagnostico">Diagnóstico</option><option value="frenos">Frenos</option></select></label><label>Marca<input maxLength="60" required="" name="marca"/></label><label>Modelo<input maxLength="60" required="" name="modelo"/></label><label>Año<input inputMode="numeric" pattern="[0-9]{4}" maxLength="4" required="" name="anio"/></label><label>Patente<input autoCapitalize="characters" spellCheck="false" maxLength="12" required="" name="patente"/></label></div>
+</fieldset>
+<fieldset><legend>Detalles y fotografías</legend><label>¿Qué necesitas revisar?<textarea name="detalle" rows="4" maxLength="2000" required=""></textarea></label><label>Fotografías (opcional)<input type="file" multiple="" accept="image/jpeg,image/png,image/webp" aria-describedby="_R_dbsnnb_" aria-invalid="false" name="fotos"/></label><p id="_R_dbsnnb_" class="muted">Hasta 4 fotos JPG, PNG o WebP. Máximo 5 MB por foto.</p>
+</fieldset>
+<fieldset><legend>Datos de contacto</legend><div class="fields"><label>Nombre<input autoComplete="name" maxLength="100" required="" name="nombre"/></label><label>Correo<input type="email" autoComplete="email" maxLength="254" required="" name="correo"/></label><label>Teléfono<input type="tel" autoComplete="tel" maxLength="24" required="" name="telefono"/></label></div>
+</fieldset><button class="button primary" type="submit" disabled="">Enviar solicitud</button>
+</form>
+</section>
+</main>
+<footer id="contacto" class="site-footer"><div class="wrap footer-inner"><div><p class="brand">Taller Umbral</p><p>Nombre provisional</p></div><div><h2>Ubicación y horarios</h2><p>Datos por confirmar.</p></div></div>
+</footer>
+</body>
+</html>

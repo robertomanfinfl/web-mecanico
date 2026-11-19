@@ -1,0 +1,5 @@
+.demo-banner { background: #ece6d7; color: #1c211f; border-bottom: 1px solid #a6a49a; }
+.demo-banner-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .75rem 1.5rem; padding-block: .85rem; }
+.demo-banner strong { font-weight: 750; }
+.demo-banner p { margin: 0; }
+.demo-banner nav { gap: .5rem; }
