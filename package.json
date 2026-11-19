@@ -1,0 +1,39 @@
+{
+  "name": "web-mecanico",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate deploy",
+    "admin:promote": "node --env-file-if-exists=.env scripts/promote-admin.mjs",
+    "postinstall": "prisma generate"
+  },
+  "dependencies": {
+    "@fontsource-variable/source-sans-3": "^5.3.1",
+    "@fontsource/barlow-condensed": "^5.3.0",
+    "@prisma/adapter-pg": "^7.10.1",
+    "@prisma/client": "^7.10.1",
+    "better-auth": "^1.7.25",
+    "dotenv": "^18.0.10",
+    "next": "^16.0.0",
+    "nodemailer": "^10.6.0",
+    "pg": "^8.23.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "sharp": "^0.35.5",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.0",
+    "@types/node": "^24.0.0",
+    "@types/nodemailer": "^8.0.2",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "prisma": "^7.10.1",
+    "tailwindcss": "^4.1.0",
+    "typescript": "^5.9.0"
+  }
+}

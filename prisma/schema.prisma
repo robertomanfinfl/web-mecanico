@@ -1,0 +1,143 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id            String   @id
+  name          String
+  email         String   @unique
+  emailVerified Boolean  @default(false)
+  image         String?
+  role          String   @default("cliente")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  sessions      Session[]
+  accounts      Account[]
+  requests      CustomerRequest[]
+  uploads       Media[]
+}
+
+model Session {
+  id        String   @id
+  token     String   @unique
+  userId    String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  user      User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model Account {
+  id                    String   @id
+  accountId             String
+  providerId            String
+  userId                String
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+  user                  User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([providerId, accountId])
+  @@index([userId])
+}
+
+model Verification {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([identifier])
+}
+
+model RateLimit {
+  id          String @id
+  key         String @unique
+  count       Int
+  lastRequest BigInt
+}
+
+model Workshop {
+  id          Int @id @default(1)
+  name        String
+  headline    String
+  introduction String
+  benefitsTitle String
+  benefits    String
+  address     String?
+  hours       String?
+  whatsapp    String?
+}
+
+model Service {
+  id          String @id
+  name        String
+  description String
+  price       Int?
+  createdAt   DateTime @default(now())
+}
+
+enum RequestKind {
+  QUOTE
+  BOOKING
+}
+
+enum RequestStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  PROPOSED
+}
+
+model CustomerRequest {
+  id             String @id @default(uuid())
+  kind           RequestKind
+  status         RequestStatus @default(PENDING)
+  userId         String
+  serviceName    String
+  make           String
+  model          String
+  year           Int
+  plate          String
+  details        String?
+  phone          String
+  preferredAt    DateTime?
+  proposedAt     DateTime?
+  createdAt      DateTime @default(now())
+  user           User @relation(fields: [userId], references: [id], onDelete: Restrict)
+  photos         Media[]
+
+  @@index([userId, createdAt])
+  @@index([createdAt])
+}
+
+model Media {
+  id        String @id
+  bytes     Bytes
+  alt       String
+  isPublic  Boolean @default(false)
+  ownerId   String?
+  requestId String?
+  createdAt DateTime @default(now())
+  owner     User? @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  request   CustomerRequest? @relation(fields: [requestId], references: [id], onDelete: Cascade)
+
+  @@index([requestId])
+}
